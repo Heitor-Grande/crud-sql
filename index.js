@@ -26,6 +26,7 @@ app.delete("/delete/:id_product", product)
 
     //update
 app.put("/update/:id_product", product)
+app.patch("/updatePreco/:id_product", product)
 
     //create
 app.post("/create/product", product)

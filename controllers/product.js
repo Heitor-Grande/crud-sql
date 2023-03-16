@@ -27,7 +27,7 @@ product.delete("/delete/:id_product", function(req, res){
     })
 })
 
-    //update
+    //update (everything)
 product.put("/update/:id_product", function(req, res){
     let id_product = req.params.id_product
 
@@ -45,6 +45,23 @@ product.put("/update/:id_product", function(req, res){
         }
     })
 })
+
+    //update (one input(preco))
+product.patch("/updatePreco/:id_product", function(req, res){
+    let id_product = req.params.id_product
+    
+    let new_preco = req.body.preco
+    
+    database.run(`update product set preco = "${new_preco}" where id_product = "${id_product}"` , function(erro){
+            if(erro){
+                res.send(erro)
+            }
+            else{
+                res.send("Produto atualizado com sucesso")
+            }
+        })
+    })
+
     //create
 product.post("/create/product", function(req, res){
     
